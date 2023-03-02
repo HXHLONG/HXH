@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小灯泡</title>
+    <link rel="stylesheet" href="./css/deng.css">
+</head>
+<body>
+    <div class="light">
+        <div class="wire"></div>
+        <div class="bulb">
+            <span></span>
+            <span></span>
+        </div>
+        <div class="switch">
+            <div class="btn"></div>
+        </div>
+    </div>
+
+    <!-- add sound no click -->
+    <audio id="audio" src="./music/switch.mp3" autostart="false"></audio>
+	<audio  src="./music/switch.mp3"  autoplay="autoplay" loop="loop"></audio>
+    <script>
+        let btn = document.querySelector('.btn');
+        let body = document.querySelector('body');
+        let audio = document.querySelector('#audio');
+        btn.onclick = function(){
+            body.classList.toggle('on');
+            audio.play();
+        }
+    </script>
+</body>
+</html>
