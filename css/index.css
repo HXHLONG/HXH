@@ -276,7 +276,7 @@ audio {
 	background-color: #008000;
 	width: calc(var(--widimg) * 1px);
 	height: 300px;
-	background: url(./images/xnvhai.png) no-repeat;
+	background: url(../images/xnvhai.png) no-repeat;
 	animation: nvhimg 1s steps(7) infinite ;
 }
 @keyframes nvhimg{
