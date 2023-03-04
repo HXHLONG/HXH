@@ -9,13 +9,69 @@
 				padding: 0;
 				margin: 0;
 				--widimg: 1260/7;
+				box-sizing: border-box;
 			}
 			.rbimgs{
+				position: fixed;
+				bottom: -100px;
+				right: -50px;
 				background-color: #008000;
 				width: calc(var(--widimg) * 1px);
 				height: 300px;
 				background: url(./images/xnvhai.png) no-repeat;
 				animation: nvhimg 1s steps(7) infinite ;
+				transform: scale(0.4);
+			}
+			
+			body{
+			    background-color: #333;
+			}
+			.wrap{
+			    display: flex;
+			    width: 90vw;
+				align-items: center;
+				justify-content: center; 
+				height: 100vh;
+				margin: 0 auto;
+			}
+			.card{
+			    background-size: auto 100%;
+			    background-position:center;
+			    background-repeat: no-repeat;
+			    border-radius: 50px;
+			    color: aliceblue;
+			    flex: 0.4;
+			    cursor: pointer;
+			    height: 80vh;
+			    position: relative;
+			    margin: 10px;
+			    transition: flex 0.7s cubic-bezier(0.05,0.6,0.4,0.9);
+			}
+			.card h3{
+			    font-size: 20px;
+			    position: absolute;
+			    left: 20px;
+			    bottom: 20px;
+			    transition: opcity 0s ease-in 0s;
+			}
+			.card.active{
+			    /* 通过弹性布局方式 来改变每个盒子的收缩 */
+			    flex: 10;
+			}
+			.card.active h3{
+			    opacity: 1;
+			    transition: opcity 0.3s ease-in 0.4s;
+			}
+			@media (max-width:500px) {
+			    .wrap{
+			        width: 100vw;
+			    }
+			    .card:nth-child(4){
+			        display: none;
+			    }
+			    .card:nth-child(5){
+			        display: none;
+			    }
 			}
 			@keyframes nvhimg{
 				0% {
@@ -24,14 +80,63 @@
 				100% {
 					background-position-x: -1260px;
 				}
+				
+		
 			}
 		</style>
 	</head>
 	<body>
+	  <div class="wrap">
+		    <div class="card active" style="background-image: url(./images/meinv1.jpg)">
+		        <h3>名族风 舞蹈</h3>
+		    </div>
+		    <div class="card" style="background-image: url(./images/meinv2.jpg)">
+		        <h3>古装 俏皮 可爱</h3>
+		    </div>
+		    <div class="card" style="background-image: url(./images/meinv3.jpg)">
+		        <h3>古装 清纯 河边</h3>
+		    </div>
+		    <div class="card" style="background-image: url(./images/meinv4.jpg)">
+		        <h3>古装 郊外 鲜花</h3>
+		    </div>
+		    <div class="card" style="background-image: url(./images/meinv5.jpg)">
+		        <h3>家居 猫咪 可爱</h3>
+		    </div>
+		    <div class="card" style="background-image: url(./images/meinv6.jpg)">
+		       <h3>古装 木屋</h3>
+		   </div>
+		   <div class="card" style="background-image: url(./images/meinv7.jpg)">
+		       <h3>木屋 木扇 美女</h3>
+		   </div>
+		   <div class="card" style="background-image: url(./images/meinv8.jpg)">
+		       <h3>古韵 气质 美女</h3>
+		   </div>
+		</div>
 	   <div class="rbimgs">
 	   	
 	   </div>
-	
+	   
+	   <script>
+	       //  获取小卡片
+	       var wrap = document.getElementsByClassName("wrap")[0];
+	       var cards = wrap.getElementsByClassName("card");
+	       console.log(wrap);
+	       console.log(cards);
+	       //编节点给cards添加移入事件，并添加active类名实现 收缩效果
+	       for(var i = 0;i<cards.length;i++){
+	           cards[i].addEventListener('click',function(){ //鼠标的位置点击执行
+	               // 先清除
+	               removeActive();
+	               // 给card添加active类名
+	               this.className = "card active" 
+	           })
+	       }
+	       function removeActive(){
+	           for(var i = 0;i<cards.length;i++){
+	               cards[i].className = "card";
+	           }
+	       }
+	   </script>
 	</body>
 	
 	
